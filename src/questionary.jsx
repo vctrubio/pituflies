@@ -52,9 +52,23 @@ export const Questionary = () => {
     };
 
     const onSubmit = () => {
+        const questionEntries = Object.entries(initialQuestions).map(([key, value]) => `<p>${key}: ${value}</p>`).join('');
+
         const templateParams = {
-            to_email: 'vctrubio@gmail.com', // Recipient's email address
-            message_html: 'Hello, this is a test2 email!', // Email content
+            to_email: 'vctrubio@gmail.com',
+            html_content: `
+            <html>
+                <head>
+                    <title>Your Email Title</title>
+                </head>
+                <body>
+                    <h1>Hello Sexy,</h1>
+                    ${questionEntries}
+                    <p>Best wishes,</p>
+                    <p>Your Name</p>
+                </body>
+            </html>
+                        `
         };
         emailSender.setParams(templateParams);
         emailSender.sendEmail();
