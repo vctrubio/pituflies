@@ -8,6 +8,10 @@ export class EmailSender {
   }
 
   setParams(params) {
+    if (!params) {
+      this.templateParams = {};
+      return;
+    }
     this.templateParams = params;
   }
 
@@ -19,7 +23,7 @@ export class EmailSender {
       this.templateParams,
       this.userId
     ).then((response) => {
-      console.log('Email sent successfully!', response);
+      console.log('Email sent successfully!', response.status, response.text);
     }).catch((error) => {
       console.error('Email sending failed:', error);
     });

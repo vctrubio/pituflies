@@ -1,8 +1,18 @@
-import { Slider, Button } from '@mui/material';
+import { Slider, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import { useState } from 'react';
 import { EmailSender } from './Email';
 import './App.css';
 
+function ThankYouMessage({ show }) {
+    if (!show)
+        return null
+
+    return (
+        <div className="thank-you-message">
+            <p>Thank you for subscribing!</p>
+        </div>
+    )
+}
 
 const SliderComponent = ({ title, value, onChange }) => {
     return (
@@ -13,7 +23,7 @@ const SliderComponent = ({ title, value, onChange }) => {
             </div>
             <Slider value={value} onChange={onChange} aria-label="Default value" />
         </div>
-    );
+    )
 };
 
 const TopicComponent = ({ questions }) => {
@@ -23,8 +33,8 @@ const TopicComponent = ({ questions }) => {
         setQuestionValues(prevValues => ({
             ...prevValues,
             [title]: newValue
-        }));
-    };
+        }))
+    }
 
     return (
         <div>
@@ -42,40 +52,40 @@ const TopicComponent = ({ questions }) => {
 };
 
 export const Questionary = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [showThankYou, setShowThankYou] = useState(false);
+    const [email, setEmail] = useState('');
     const emailSender = new EmailSender();
 
-    const topicQuestion = "How many questions do you need";
     const initialQuestions = {
         'Hours a day do you open': 50,
         'Gas burners do you use': 75,
         'Seats do you have': 25
     };
 
-    const onSubmit = () => {
-        const questionEntries = Object.entries(initialQuestions).map(([key, value]) => `<p>${key}: ${value}</p>`).join('');
+    const setReset = () => {
+        setEmail('');
+        setIsOpen(false);
+        setShowThankYou(true);
+        setTimeout(() => setShowThankYou(false), 2000);
+        emailSender.setParams()
+    }
 
+    const onSubmit = () => {
+        const questionEntries = Object.entries(initialQuestions).map(([key, value]) => `${key}: ${value}`).join('\n')
         const templateParams = {
-            to_email: 'vctrubio@gmail.com',
-            html_content: `
-            <html>
-                <head>
-                    <title>Your Email Title</title>
-                </head>
-                <body>
-                    <h1>Hello Sexy,</h1>
-                    ${questionEntries}
-                    <p>Best wishes,</p>
-                    <p>Your Name</p>
-                </body>
-            </html>
-                        `
-        };
-        emailSender.setParams(templateParams);
-        emailSender.sendEmail();
+            param_email: email,
+            param_data: questionEntries
+        }
+
+        emailSender.setParams(templateParams)
+        emailSender.sendEmail()
+        setReset();
     };
 
     return (
         <div className='question-me'>
+            <ThankYouMessage show={showThankYou} />
             <div>
                 Help Us Help You
             </div>
@@ -83,7 +93,30 @@ export const Questionary = () => {
                 <TopicComponent questions={initialQuestions} />
             </div>
             <div>
-                <Button variant='outlined' color='primary' onClick={onSubmit}>Submit</Button>
+                <Button variant='outlined' color='primary' onClick={() => setIsOpen(true)}>Sign Up</Button>
+                <Dialog open={isOpen} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Early Bird Gets The Worm</DialogTitle>
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Email Address"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            fullWidth
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setIsOpen(false)} color="primary">
+                            Cancel
+                        </Button>
+                        <Button onClick={onSubmit} color="primary">
+                            Subscribe
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         </div>
     );

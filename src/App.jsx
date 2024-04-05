@@ -7,7 +7,7 @@ function App() {
     <>
       <div id="app">
         <div id="top-page" className='page'>
-          <h1>Warme's2</h1>
+          <h1>Warme's</h1>
           <p>Description</p>
         </div>
         <div id="second-page" className='page'>
