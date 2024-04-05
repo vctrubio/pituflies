@@ -7,23 +7,14 @@ export class EmailSender {
     this.userId = import.meta.env.VITE_EMAILJS_USER_ID;
   }
 
-  setParams(params) {
-    if (!params) {
-      this.templateParams = {};
-      return;
-    }
-    this.templateParams = params;
-  }
-
-  sendEmail() {
-    console.log('Sending email...');
+  sendEmail(temlateParams) {
     emailjs.send(
       this.serviceId,
       this.templateId,
-      this.templateParams,
+      temlateParams,
       this.userId
     ).then((response) => {
-      console.log('Email sent successfully!', response.status, response.text);
+      console.log('Email sent successfully!', response.text);
     }).catch((error) => {
       console.error('Email sending failed:', error);
     });

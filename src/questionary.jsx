@@ -68,7 +68,6 @@ export const Questionary = () => {
         setIsOpen(false);
         setShowThankYou(true);
         setTimeout(() => setShowThankYou(false), 2000);
-        emailSender.setParams()
     }
 
     const onSubmit = () => {
@@ -77,9 +76,7 @@ export const Questionary = () => {
             param_email: email,
             param_data: questionEntries
         }
-
-        emailSender.setParams(templateParams)
-        emailSender.sendEmail()
+        emailSender.sendEmail(templateParams)
         setReset();
     };
 
