@@ -15,6 +15,7 @@
   --colorverde: #BFD689;
 
 
+  --fontsmall: 14px;
   --fontsmallmed: 18px;
   --fontbig: 42px;
 }
@@ -54,6 +55,48 @@
   color: var(--colorblanco);
   font-size: var(--fontbig);
 }
+
+.icon-d{
+  border: 1px solid var(--borderwhite);
+  height: 240px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  align-items: center;
+  padding: 4em;
+}
+
+.icon-d-top{
+  margin-bottom: 2em;
+}
+
+.icon-d-bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+}
+
+.icon-component{
+  /* border: 1px solid var(--borderwhite); */
+  width: 220px;
+}
+
+.icon-description{
+  font-size: var(--fontsmall);
+}
+
+
+
+
+
+
+
+
+
 
 .navbar-mini {
   /* border: 1px solid var(--borderwhite); */
