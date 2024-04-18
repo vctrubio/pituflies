@@ -6,7 +6,7 @@ import { NavbarMain } from './navbarmain'
 import { Banner } from './banner'
 import { IconDescription } from './icondescription'
 import { SliderPage } from './sliderman'
-
+import { Footer } from './footer'
 function App() {
   return (
     <>
@@ -16,6 +16,7 @@ function App() {
         <Banner />
         <IconDescription />
         <SliderPage/>
+        <Footer/>
       </div>
     </>
   )
