@@ -6,7 +6,16 @@
   font-family: Monaco;
   font-size: 24px;
   color: coral;
-  --borderwhite: none;
+  --borderwhite: white;
+
+  --colorgris: #3B3B3B;
+  --colorrojo: #FAA987;
+  --colorblanco: #FFFCF2;
+  --colorazul: #395463;
+  --colorverde: #BFD689;
+
+
+  --fontsmallmed: 18px;
 }
 
 #app {
@@ -18,7 +27,6 @@
 .page {
   scroll-snap-align: start;
 
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,6 +37,46 @@
   border: 1px solid var(--borderwhite);
 }
 
+.navbar-mini{
+  /* border: 1px solid var(--borderwhite); */
+  width: 100vw;
+  height: 24px;
+
+  display: flex;
+  justify-content: space-around;
+  padding: 2px 0;
+  font-size: var(--fontsmallmed);
+  background-color: var(--colorrojo);
+  color: var(--colorblanco);
+}
+
+.navbar-main {
+  border: 1px solid var(--borderwhite);
+
+  width: 100vw;
+  height: 48px;
+
+  display: flex;
+  justify-content: space-between;
+
+  background-color: var(--colorblanco);
+  color: var(--colorgris)
+}
+
+.navbar-menu {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.navbar-menu div {
+  margin: 0px 10px;
+}
+
+.navbar-menu div:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
 
 .question-me{
   height: 100%;
