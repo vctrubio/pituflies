@@ -5,8 +5,7 @@ import { NavbarMini } from './navbarmini'
 import { NavbarMain } from './navbarmain'
 import { Banner } from './banner'
 import { IconDescription } from './icondescription'
-import { Icon } from '@mui/material'
-
+import { SliderPage } from './sliderman'
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
         <NavbarMain />
         <Banner />
         <IconDescription />
+        <SliderPage/>
       </div>
     </>
   )
