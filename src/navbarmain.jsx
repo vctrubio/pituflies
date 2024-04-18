@@ -1,9 +1,10 @@
-
+import logo_warme from "./assets/warme_negro.png"
+import logo_slogan from "./assets/slogan_negro_mayuscula.png"
 
 const CatchPhrase = () => {
     return (
         <div>
-            <img src="src/assets/slogan_negro_mayuscula.png" alt="Warme, For a cooler planet"
+            <img src={logo_slogan} alt="Warme For a cooler planet"
                 style={{ height: '15px' }} />
         </div>
     )
@@ -23,7 +24,7 @@ const MenuBar = () => {
 const Branding = () => {
     return (
         <div>
-            <img src="src/assets/warme_negro.png" alt="Warme, For a cooler planet"
+            <img src={logo_warme} alt="Warme, For a cooler planet"
                 style={{ height: '20px' }} />
         </div>
     )
