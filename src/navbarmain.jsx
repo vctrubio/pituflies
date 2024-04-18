@@ -3,7 +3,8 @@
 const CatchPhrase = () => {
     return (
         <div>
-            For a cooler planet
+            <img src="src/assets/slogan_negro_mayuscula.png" alt="Warme, For a cooler planet"
+                style={{ height: '15px' }} />
         </div>
     )
 }
@@ -11,10 +12,10 @@ const CatchPhrase = () => {
 const MenuBar = () => {
     return (
         <div className="navbar-menu">
-                <div>Home</div>
-                <div>Products</div>
-                <div>About</div>
-                <div>Contact</div>
+            <div>Home</div>
+            <div>Products</div>
+            <div>About</div>
+            <div>Contact</div>
         </div>
     )
 }
@@ -22,7 +23,8 @@ const MenuBar = () => {
 const Branding = () => {
     return (
         <div>
-            Wareme Logo
+            <img src="src/assets/warme_negro.png" alt="Warme, For a cooler planet"
+                style={{ height: '20px' }} />
         </div>
     )
 }
